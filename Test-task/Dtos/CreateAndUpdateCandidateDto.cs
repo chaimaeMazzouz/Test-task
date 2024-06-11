@@ -9,9 +9,12 @@ namespace Test_task.Dtos
         string LastName,
         string PhoneNumber,
         [Required]
+        [EmailAddress]
         string Email,
         string PreferredCallTimeInterval,
+        [Url]
         string LinkedInProfileUrl,
+        [Url]
         string GitHubProfileUrl,
         [Required]
         string Comment

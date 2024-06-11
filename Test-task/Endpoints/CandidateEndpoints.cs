@@ -7,13 +7,10 @@ namespace Test_task.Endpoints
     {
         public static void MapCandidatesEndpoints(this WebApplication app)
         {
+            
             app.MapPost("/api/candidates", async (CreateAndUpdateCandidateDto candidateDto, CandidateBbContext dbContext) =>
             {
-                if (string.IsNullOrEmpty(candidateDto.Email))
-                {
-                    return Results.BadRequest("Email is required.");
-                }
-
+                
                 var candidate = new Entities.Candidate
                 {
                     FirstName = candidateDto.FirstName,
@@ -30,9 +27,9 @@ namespace Test_task.Endpoints
                 await dbContext.SaveChangesAsync();
 
                 return Results.Ok(candidate);
-            });
+            }).WithParameterValidation();
 
-            app.MapPut("/api/candidates/{id}", async (int id, UpdateCandidateDto updateCandidateDto, CandidateBbContext dbContext) =>
+            app.MapPut("/api/candidates/{id}", async (int id, CreateAndUpdateCandidateDto updateCandidateDto, CandidateBbContext dbContext) =>
             {
                 var existingCandidate = await dbContext.Candidates.FindAsync(id);
                 if (existingCandidate == null)
@@ -51,7 +48,7 @@ namespace Test_task.Endpoints
                 await dbContext.SaveChangesAsync();
 
                 return Results.Ok(existingCandidate);
-            });
+            }).WithParameterValidation();
         }
     }
 }

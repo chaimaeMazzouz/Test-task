@@ -1,0 +1,30 @@
+# Create Candidate
+POST https://localhost:7038/api/candidates
+Content-Type: application/json
+
+{
+  "firstName": "Chaimae",
+  "lastName": "Mazzouz",
+  "phoneNumber": "0618293663",
+  "email": "mazzouz.chaimae.dev@gmail.com",
+  "preferredCallTimeInterval": "9am - 11am",
+  "linkedInProfileUrl": "https://www.linkedin.com/mazzouzchaimae",
+  "gitHubProfileUrl": "https://github.com/mazzouzchaimae",
+  "comment": "Looking forward to hearing from you."
+}
+
+
+### Update Candidate
+PUT https://localhost:7038/api/candidates/1
+Content-Type: application/json
+
+{
+  "firstName": "Chaimae",
+  "lastName": "Mazzouz",
+  "phoneNumber": "0618293663",
+  "email": "mazzouz.chaimae@gmail.com",
+  "preferredCallTimeInterval": "9am - 11am",
+  "linkedInProfileUrl": "https://www.linkedin.com/mazzouzchaimae",
+  "gitHubProfileUrl": "https://github.com/mazzouzchaimae",
+  "comment": "Looking forward to hear from you."
+}
