@@ -1,6 +1,10 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Test_task.Data;
+using Test_task.Endpoints;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+var connString = builder.Configuration.GetConnectionString("CandidateDb");
+builder.Services.AddSqlite<CandidateBbContext>(connString);
+var app = builder.Build();
+app.MapCandidatesEndpoints();
 
 app.Run();

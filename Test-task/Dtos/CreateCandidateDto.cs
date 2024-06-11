@@ -2,7 +2,7 @@
 
 namespace Test_task.Dtos
 {
-    public record class CreateCandidateDto(
+    public record class CreateAndUpdateCandidateDto(
         [Required]
         string FirstName,
         [Required]
